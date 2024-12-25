@@ -18,6 +18,7 @@ public class Post {
     @JoinColumn(name = "author_id")
     private User author;
 
+    private String imagePath;
 
     // Геттеры и сеттеры
     public Long getId() {
@@ -50,6 +51,14 @@ public class Post {
 
     public void setAuthor(User author) {
         this.author = author;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 
     @Override

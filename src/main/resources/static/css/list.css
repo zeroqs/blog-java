@@ -1,0 +1,119 @@
+/* Шапка */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.header-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.header-links {
+    display: flex;
+    gap: 15px;
+}
+
+.link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 0.9rem;
+}
+
+.logout {
+    color: #e63946;
+}
+
+/* Контент */
+.container {
+    padding: 0 15px;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
+.page-title {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+/* Сетка постов */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Карточка поста */
+.post-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.card-href {
+    text-decoration: none;
+}
+
+.post-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-title {
+    font-size: 1.1rem;
+    margin: 15px;
+    color: #333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.post-excerpt {
+    font-size: 0.9rem;
+    margin: 0 15px 15px 15px;
+    color: #555;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.read-more {
+    display: block;
+    margin: 0 15px 15px 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* Футер */
+.footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    font-size: 0.85rem;
+    color: #777;
+}

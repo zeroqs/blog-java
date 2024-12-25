@@ -3,43 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Профиль пользователя</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
 </head>
 <body>
-<header class="d-flex justify-content-between align-items-center p-3 mb-4 border-bottom">
-    <h1 class="h3 mb-0">Posts</h1>
-    <a href="/profile" class="btn btn-primary">Профиль</a>
-    <a href="/logout" class="btn btn-danger">Выйти</a>
-</header>
+<div class="wrapper">
+    <header class="header">
+        <div></div>
+        <h1 class="header-title">Habrbrbr</h1>
+        <div class="header-links">
+            <a href="/profile" class="link">Профиль</a>
+            <a href="/logout" class="link logout">Выйти</a>
+        </div>
+    </header>
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Профиль пользователя</h2>
-    <div class="card col-md-6 mx-auto">
-        <div class="card-body">
-            <h5 class="card-title text-center">Информация о пользователе</h5>
+    <main class="main container">
+        <div class="profile-card">
+            <h3 class="profile-title">Профиль пользователя:</h3>
             <p><strong>Имя пользователя:</strong> <span th:text="${user.username}">JohnDoe</span></p>
             <p><strong>Почта:</strong> <span th:text="${user.email}">john@example.com</span></p>
         </div>
-    </div>
 
-    <div class="container-sm d-flex justify-content-between">
-        <h3 class="text-center mb-3">Посты пользователя</h3>
-    </div>
+        <div class="posts-section">
+            <div class="post-titles">
+                <h3 class="section-title">Посты пользователя</h3>
+                <a href="/posts" class="btn">На главную</a>
+            </div>
 
-    <div class="mt-4">
-        <div class="list-group col-md-8 mx-auto">
-            <a th:each="post : ${posts}" th:href="@{/posts/{id}(id=${post.id})}"
-               class="list-group-item list-group-item-action">
-                <h5 th:text="${post.title}">Заголовок поста</h5>
-                <p class="mb-1" th:text="${post.content}">Краткое содержание поста...</p>
-            </a>
+
+            <div class="post-list">
+                <div th:each="post : ${posts}" class="post-item">
+                    <a th:href="@{/posts/{id}(id=${post.id})}" class="post-link">
+                        <img th:src="@{${post.imagePath}}" alt="Post image" class="post-image">
+                        <h3 class="post-title" th:text="${post.title}">Заголовок поста</h3>
+                        <p class="post-excerpt" th:text="${post.content}">Краткий текст поста</p>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="text-center mt-4">
-        <a href="/posts" class="btn btn-secondary">На главную</a>
-    </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    </main>
+
+    <footer class="footer">
+        © 2024 Habrbrbr. Все права защищены.
+    </footer>
+</div>
 </body>
 </html>

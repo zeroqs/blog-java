@@ -3,42 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Список постов</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/list.css}">
 </head>
 <body>
-<header class="d-flex justify-content-between align-items-center p-3 mb-4 border-bottom">
-    <h1 class="h3 mb-0">Posts</h1>
-    <a href="/profile" class="btn btn-primary">Профиль</a>
-    <a href="/logout" class="btn btn-danger">Выйти</a>
-</header>
+    <div class="wrapper">
+        <header class="header">
+            <div></div>
+            <h1 class="header-title">Habrbrbr</h1>
+            <div class="header-links">
+                <a href="/profile" class="link">Профиль</a>
+                <a href="/logout" class="link logout">Выйти</a>
+            </div>
+        </header>
 
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Список постов</h2>
-    <div class="row">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Заголовок</th>
-                <th>Автор</th>
-                <th>Действия</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="post : ${posts}">
-                <td th:text="${post.title}">Заголовок поста</td>
-                <td>
-                    <a th:href="@{/users/{id}(id=${post.author.id})}"
-                       th:text="${post.author.username}">Автор</a>
-                </td>
-                <td>
-                    <a th:href="@{/posts/{id}(id=${post.id})}" class="btn btn-primary btn-sm">Подробнее</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <main class="main container">
+            <h2 class="page-title">Список постов</h2>
+            <div class="post-grid">
+                <div class="post-card" th:each="post : ${posts}">
+                    <a th:href="@{/posts/{id}(id=${post.id})}" class="card-href" >
+                        <img th:src="@{${post.imagePath}}" alt="Post image" class="post-image">
+                        <h3 class="post-title" th:text="${post.title}">Заголовок поста</h3>
+                        <p class="post-excerpt" th:text="${post.content}">Краткий текст поста</p>
+                        <a th:href="@{/posts/{id}(id=${post.id})}" class="read-more">Читать далее →</a>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            © 2024 Habrbrbr. Все права защищены.
+        </footer>
     </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
